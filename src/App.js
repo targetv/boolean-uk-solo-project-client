@@ -1,6 +1,7 @@
 import { Redirect, Route, Switch } from "react-router";
 import "./App.css";
-import LoginPage from "./pages/LoginPage";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/Login";
 
 function App() {
   return (
@@ -8,7 +9,10 @@ function App() {
       <main>
         <Switch>
           <Route path="/" exact>
-            <Redirect to="/login" />
+            <Redirect to="/landingpage" />
+          </Route>
+          <Route path="/landingpage">
+            <LandingPage />
           </Route>
           <Route path="/login">
             <LoginPage />
