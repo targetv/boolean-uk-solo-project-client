@@ -1,8 +1,8 @@
 
-import styled from "styled-components"
 
 import LoginPageContainer from "../components/PageContainerLogin"
 import Button from "../components/ButtonComponent"
+import { useHistory } from "react-router"
 
 
 
@@ -10,12 +10,14 @@ import Button from "../components/ButtonComponent"
 
 
 function LoginPage(){
+
+  const history = useHistory()
    
     return(
       <LoginPageContainer >
            <section className="buttonContainer">
-            <Button className="positionBottom"  >Login In</Button>
-            <Button color="black" >Sign Up</Button>
+            <Button className="positionBottom" onClick={() => { history.push("/login")}} >Login In</Button>
+            <Button color="black" onClick={() => { history.push("/register")}}>Sign Up</Button>
            </section>
       </LoginPageContainer>
          

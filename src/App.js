@@ -1,10 +1,33 @@
-import { Redirect, Route, Switch } from "react-router";
+import { Redirect, Route, Switch, useHistory } from "react-router";
 import "./App.css";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
+import { useState, useEffect } from "react";
 
 function App() {
+  const history = useHistory();
+  const [authenticatedUser, setAuthenticatedUser] = useState(null);
+
+  console.log("User Router", { authenticatedUser });
+
+  useEffect(() => {
+    if (authenticatedUser) return;
+    const userAsJSON = localStorage.getItem("user");
+    const user = JSON.parse(userAsJSON);
+
+    if (user) {
+      setAuthenticatedUser(user);
+      history.push("/home");
+    }
+  }, [authenticatedUser]);
+
+  const handelLogout = () => {
+    localStorage.removeItem("user");
+    setAuthenticatedUser(null);
+  };
+
   return (
     <div className="App">
       <main>
@@ -16,10 +39,16 @@ function App() {
             <LandingPage />
           </Route>
           <Route path="/login">
-            <LoginPage />
+            <LoginPage
+              setAuthenticatedUser={setAuthenticatedUser}
+              authenticatedUser={authenticatedUser}
+            />
           </Route>
           <Route path="/register">
-            <RegisterPage />
+            <RegisterPage setAuthenticatedUser={setAuthenticatedUser} />
+          </Route>
+          <Route path="/home">
+            {authenticatedUser ? <HomePage /> : <Redirect to="/register" />}
           </Route>
         </Switch>
       </main>
