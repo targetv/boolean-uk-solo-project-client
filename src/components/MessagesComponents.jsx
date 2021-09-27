@@ -52,11 +52,16 @@ function MessageComponent({currentChannel}){
    },[currentChannel])
 
    useEffect(() => {
-       const interval = setInterval(() => {
+       if(currentChannel !== null){
+               const interval = setInterval(() => {
            fetchRequest()
        }, 5000);
        return () => clearInterval(interval)
-   },[fetching, currentChannel])
+         
+       }
+       return
+   
+   },[currentChannel])
 
  
 
