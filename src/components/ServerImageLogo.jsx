@@ -17,12 +17,16 @@ height: 100px;
 
 
 
-function ServerImageLogo({Server}){
+function ServerImageLogo({Server, setCurrentSever}){
+
+    const handleClick = () => {
+        setCurrentSever(Server.id)
+    }
 
 
     console.log(Server)
     return(
-        <ServerImage><img src={Server.serverimage} /></ServerImage>
+        <ServerImage onClick={handleClick}><img src={Server.serverimage} /></ServerImage>
     )
 }
 

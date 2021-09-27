@@ -37,48 +37,49 @@ height: 100px;
 
 `
 
-function SeverSectionComponent(){
+function SeverSectionComponent({setCurrentSever}){
 
     const [servers, setServers] = useState([])
 
+
     let user = localStorage.getItem("user")
     user = JSON.parse(user)
+
+  
+
   
 
 
    
 
     useEffect(() => {
-        fetch(`http://localhost:3030/server/${user.id}`, {
-            method: "GET",
-            headers:{
-                "Content-Type" : "application/json"
-            },
-        }) .then(res => res.json()) .then(data => {
-            setServers(data.getServers)
+        fetch(`http://localhost:3030/user/${user.id}`) .then(res => res.json()) .then(data => {
+            const parsedData = [
+                ...data.getUser[0].ownedServers,
+                data.getUser[0].memberServers[0].server
+
+            ]
+            setServers(parsedData)
+          
+            
         })
+       
 
     },[setServers])
+
+
 
     
     return(
         <AsideSection>
         <AddServerIcon><IoAddCircleOutline className="icon"/></AddServerIcon>
-        {/* {console.log(servers[0].id)} */}
+
         {servers.map(server => {
-            if(servers.length === 0){
-                return(
-                    <p>Loading Content</p>
-                )
-            }
-          
-            else{
-                return(
-                  <ServerImageLogo Server={server}/>
-                )
-            }
-           
+            return(
+                <ServerImageLogo Server={server} setCurrentSever={setCurrentSever}/>
+            )
         })}
+       
         </AsideSection>
     )
 }

@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import SeverSectionComponent from "../components/ServerSectionComponent";
+import ChannelsComponent from "../components/ChannelsComponent";
+import MessageComponent from "../components/MessagesComponents";
+import { useState } from "react";
 
 
 const TestContainer = styled.div`
@@ -13,14 +16,6 @@ grid-template:
     background-color: green;
 }
 
-.friends{
-    grid-area: friends;
-    background-color: red;
-}
-.messages{
-    grid-area: messages;
-    background-color: yellow;
-}
 
 .account{
     grid-area: account;
@@ -37,11 +32,14 @@ grid-template:
 
 
 function HomePage(){
+    const [currentServer, setCurrentSever] = useState(null);
+    const [currentChannel, setCurrentChannel] = useState(null);
+    
     return(
         <TestContainer>
-           <SeverSectionComponent/>
-           <div className="friends"></div>
-           <div className="messages"></div>
+           <SeverSectionComponent setCurrentSever={setCurrentSever}/>
+           <ChannelsComponent currentServer={currentServer} setCurrentChannel={setCurrentChannel}/>
+           <MessageComponent currentChannel={currentChannel}/>
            <div className="account"></div>
            <div className="sendmessage"></div>
 
