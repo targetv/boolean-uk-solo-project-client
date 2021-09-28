@@ -6,6 +6,7 @@ const MessageSection = styled.section`
 grid-area: messages;
 padding-top: 10px;
 background-color: #444444;
+overflow: scroll;
 
 `
 
@@ -34,9 +35,9 @@ div{
 
 `
 
-function MessageComponent({currentChannel}){
+function MessageComponent({currentChannel, messages, setMessages}){
 
-    const [messages, setMessages] = useState([])
+    
     const [fetching, setFetching] = useState(false)
 
     const fetchRequest = () => {

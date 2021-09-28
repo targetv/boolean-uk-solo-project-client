@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
+import AccountPage from "./pages/AccountPage";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -47,8 +48,15 @@ function App() {
           <Route path="/register">
             <RegisterPage setAuthenticatedUser={setAuthenticatedUser} />
           </Route>
-          <Route path="/home">
-            {authenticatedUser ? <HomePage /> : <Redirect to="/register" />}
+          <Route path="/account">
+            {authenticatedUser ? (
+              <AccountPage />
+            ) : (
+              <Redirect to="/landingpage" />
+            )}
+          </Route>
+          <Route path="/home" exact>
+            {authenticatedUser ? <HomePage /> : <Redirect to="/landingpage" />}
           </Route>
         </Switch>
       </main>

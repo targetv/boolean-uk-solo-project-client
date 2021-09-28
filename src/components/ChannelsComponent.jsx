@@ -8,6 +8,7 @@ const ChannelUl = styled.ul`
     display: grid;
     grid-template-rows: repeat(auto-fit, minmax(100px, 100px));
     padding-top: 5px;
+    overflow: scroll;
 
     a{
         cursor: pointer;

@@ -3,7 +3,7 @@ import styled from "styled-components";
  const LoginPageContainer = styled.div`
 display: grid;
 place-content: center;
-background-color: white;
+background-color: ${props => props.backgroundColor || "white"};
 
  
 .buttonContainer{
@@ -17,6 +17,7 @@ background-color: white;
     border-radius: 20px;
     grid-gap: 20px;
     padding: 20px;
+ 
     
 }
 

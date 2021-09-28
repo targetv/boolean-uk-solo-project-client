@@ -10,6 +10,7 @@ const AsideSection = styled.aside`
     padding: 5px;
     grid-template-rows: repeat(auto-fit, minmax(100px, 100px));
     background-color: #444444;
+    overflow: scroll;
     
 
 `
@@ -17,7 +18,7 @@ const AsideSection = styled.aside`
 
 
 
-const AddServerIcon = styled.a`
+export const AddServerIcon = styled.a`
 
 display: grid;
 height: 100px;
@@ -63,6 +64,8 @@ function SeverSectionComponent({setCurrentSever}){
           
             
         })
+      
+        
        
 
     },[setServers])
