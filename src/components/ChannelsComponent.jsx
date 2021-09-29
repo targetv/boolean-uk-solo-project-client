@@ -34,7 +34,7 @@ const ChannelSection = styled.section`
 
 function ChannelsComponent({currentServer, setCurrentChannel}){
     const [channels, setChannels] = useState([])
-    const apiUrl = process.env.API_URL;
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     function getAllChannels(){
 
