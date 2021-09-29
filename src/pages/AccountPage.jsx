@@ -81,7 +81,7 @@ function AccountPage(){
 
     const [friendRequests, setFriendRequests] = useState()
     
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = process.env.API_URL;
 
     useEffect(() => {
         fetch(`${apiUrl}/friendsrequest/${user.id}`).then(res => res.json()).then(data => setFriendRequests(data))

@@ -41,8 +41,7 @@ height: 100px;
 function SeverSectionComponent({setCurrentSever}){
 
     const [servers, setServers] = useState([])
-    const apiUrl = process.env.REACT_APP_API_URL;
-
+    const apiUrl = process.env.API_URL;
 
     let user = localStorage.getItem("user")
     user = JSON.parse(user)

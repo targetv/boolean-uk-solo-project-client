@@ -16,7 +16,7 @@ function RegisterPage({setAuthenticatedUser}){
 
     console.log(reTypePassword)
 
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = process.env.API_URL;
 
     const handleChange = (event) => {
         const name = event.target.name
