@@ -55,7 +55,7 @@ function SeverSectionComponent({setCurrentSever}){
    
 
     useEffect(() => {
-        fetch(`${apiUrl}/user/${user.id}`) .then(res => res.json()) .then(data => {
+        fetch(`${apiUrl}/user/${user.id}`).then(res => res.json()).then(data => {
             const parsedData = [
                 ...data.getUser[0].ownedServers,
                 data.getUser[0].memberServers[0].server
@@ -69,6 +69,7 @@ function SeverSectionComponent({setCurrentSever}){
         
        
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[setServers])
 
 

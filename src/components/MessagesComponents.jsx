@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 const MessageSection = styled.section`
 grid-area: messages;
@@ -39,7 +39,6 @@ function MessageComponent({currentChannel, messages, setMessages}){
     const apiUrl = process.env.REACT_APP_API_URL;
 
     
-    const [fetching, setFetching] = useState(false)
 
     const fetchRequest = () => {
         fetch(`${apiUrl}/post/${currentChannel}`).then(res => res.json()).then(data => {
@@ -49,8 +48,9 @@ function MessageComponent({currentChannel, messages, setMessages}){
 
    useEffect(() => {
             fetchRequest()
-            setFetching(true)
+          
 
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    },[currentChannel])
 
    useEffect(() => {
@@ -63,6 +63,7 @@ function MessageComponent({currentChannel, messages, setMessages}){
        }
        return
    
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    },[currentChannel])
 
  

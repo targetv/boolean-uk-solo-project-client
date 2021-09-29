@@ -86,6 +86,7 @@ function AccountPage(){
     useEffect(() => {
         fetch(`${apiUrl}/friendsrequest/${user.id}`).then(res => res.json()).then(data => setFriendRequests(data))
         console.log("requests",friendRequests)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[setFriendRequests])
  
     return(

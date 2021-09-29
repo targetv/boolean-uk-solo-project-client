@@ -51,6 +51,7 @@ function ChannelsComponent({currentServer, setCurrentChannel}){
                        <ChannelUl>
                                 {channels.map(channel => {
                                     return(
+                                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
                                         <a onClick={() => {setCurrentChannel(channel.id)}}><ChannelElement>{channel.channelName}</ChannelElement></a>
                                     )
                                 })}
@@ -69,6 +70,7 @@ function ChannelsComponent({currentServer, setCurrentChannel}){
         fetch(`${apiUrl}/channel/${currentServer}`).then(res => res.json()).then(data => {
            setChannels(data.getChannels)
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[currentServer])
 
     return(

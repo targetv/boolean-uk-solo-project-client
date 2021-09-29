@@ -1,4 +1,4 @@
-import styled from "styled-components";
+
 import InputComponent from "../components/InputComponent";
 
 import LoginPageContainer from "../components/PageContainerLogin";
@@ -13,6 +13,8 @@ function RegisterPage({setAuthenticatedUser}){
     const history = useHistory()
     const [newUser, setNewUser] = useState({email: "", username: "", password: ""})
     const [reTypePassword, setReTypePassword] = useState("")
+
+    console.log(reTypePassword)
 
     const apiUrl = process.env.REACT_APP_API_URL;
 

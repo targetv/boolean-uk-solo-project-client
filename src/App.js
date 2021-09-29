@@ -22,12 +22,13 @@ function App() {
       setAuthenticatedUser(user);
       history.push("/home");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authenticatedUser]);
 
-  const handelLogout = () => {
-    localStorage.removeItem("user");
-    setAuthenticatedUser(null);
-  };
+  // const handelLogout = () => {
+  //   localStorage.removeItem("user");
+  //   setAuthenticatedUser(null);
+  // };
 
   return (
     <div className="App">
