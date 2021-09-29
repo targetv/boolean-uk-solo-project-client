@@ -45,6 +45,7 @@ font-size: 1.1rem;
 
 function SendMessageComponent({currentChannel}){
     let currentUser = JSON.parse(localStorage.getItem("user"));
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [messageToSend, setMessage] = useState({})
 
@@ -59,7 +60,7 @@ function SendMessageComponent({currentChannel}){
 
     const onSubmitMessage = (event) => {
         event.preventDefault()
-        fetch("http://localhost:3030/post", {
+        fetch(`${apiUrl}/post`, {
             method: "POST",
             headers:{
                 'Content-Type' : 'application/json'

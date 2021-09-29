@@ -34,9 +34,12 @@ const ChannelSection = styled.section`
 
 function ChannelsComponent({currentServer, setCurrentChannel}){
     const [channels, setChannels] = useState([])
+    const apiUrl = process.env.REACT_APP_API_URL;
     
 
     function getAllChannels(){
+
+        
         
         if( channels === undefined || channels.length === 0){
             return(
@@ -63,7 +66,7 @@ function ChannelsComponent({currentServer, setCurrentChannel}){
 
 
     useEffect(() => {
-        fetch(`http://localhost:3030/channel/${currentServer}`).then(res => res.json()).then(data => {
+        fetch(`${apiUrl}/channel/${currentServer}`).then(res => res.json()).then(data => {
            setChannels(data.getChannels)
         })
     },[currentServer])

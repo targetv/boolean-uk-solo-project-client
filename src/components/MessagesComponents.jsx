@@ -36,12 +36,13 @@ div{
 `
 
 function MessageComponent({currentChannel, messages, setMessages}){
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     
     const [fetching, setFetching] = useState(false)
 
     const fetchRequest = () => {
-        fetch(`http://localhost:3030/post/${currentChannel}`).then(res => res.json()).then(data => {
+        fetch(`${apiUrl}/post/${currentChannel}`).then(res => res.json()).then(data => {
             setMessages(data.getPost)
          })
     }

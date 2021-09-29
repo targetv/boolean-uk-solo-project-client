@@ -14,6 +14,8 @@ function RegisterPage({setAuthenticatedUser}){
     const [newUser, setNewUser] = useState({email: "", username: "", password: ""})
     const [reTypePassword, setReTypePassword] = useState("")
 
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     const handleChange = (event) => {
         const name = event.target.name
         const value = event.target.value
@@ -26,7 +28,7 @@ function RegisterPage({setAuthenticatedUser}){
     const handleSubmit = (event) => {
         event.preventDefault()
         
-        fetch("http://localhost:3030/signup", {
+        fetch(`${apiUrl}/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

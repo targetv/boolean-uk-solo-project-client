@@ -41,6 +41,7 @@ height: 100px;
 function SeverSectionComponent({setCurrentSever}){
 
     const [servers, setServers] = useState([])
+    const apiUrl = process.env.REACT_APP_API_URL;
 
 
     let user = localStorage.getItem("user")
@@ -54,7 +55,7 @@ function SeverSectionComponent({setCurrentSever}){
    
 
     useEffect(() => {
-        fetch(`http://localhost:3030/user/${user.id}`) .then(res => res.json()) .then(data => {
+        fetch(`${apiUrl}/user/${user.id}`) .then(res => res.json()) .then(data => {
             const parsedData = [
                 ...data.getUser[0].ownedServers,
                 data.getUser[0].memberServers[0].server

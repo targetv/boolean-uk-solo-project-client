@@ -13,6 +13,7 @@ import { useHistory } from "react-router";
 function LoginPage({setAuthenticatedUser, authenticatedUser}){
 
     const history = useHistory()
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [user, setUser] = useState({ email: "",
     password: "",})
@@ -23,7 +24,7 @@ function LoginPage({setAuthenticatedUser, authenticatedUser}){
         console.log(user)
 
     
-        fetch("http://localhost:3030/signin", {
+        fetch(`${apiUrl}/signin`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
